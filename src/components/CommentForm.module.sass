@@ -1,0 +1,34 @@
+@import "../variables"
+
+.button
+  padding: 0 20px
+  min-width: 120px
+  height: 40px
+  background-color: $c-primary
+  border: none
+  color: $c-inverse
+  font-size: 18px
+  cursor: pointer
+  transition: $t-primary
+
+  &:hover
+    background-color: $c-accent
+
+.form
+  font-size: 0
+
+.textArea
+  margin-bottom: 10px
+  padding: 10px
+  width: 100%
+  min-height: 200px
+  border: solid 2px $c-primary
+  font-size: 18px
+  resize: none
+  transition: $t-primary
+
+  &::placeholder
+    color: $c-secondary
+
+  &:focus
+    border-color: $c-accent
