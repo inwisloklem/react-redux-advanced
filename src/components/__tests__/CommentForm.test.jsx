@@ -1,20 +1,44 @@
 import React from 'react'
 import CommentForm from 'components/CommentForm'
-import { shallow } from 'enzyme'
+import Root from 'Root'
+import { mount } from 'enzyme'
 
 describe('CommentForm', () => {
+  const comment = 'Test comment.'
   let commentForm
 
   beforeEach(() => {
-    commentForm = shallow(<CommentForm />)
+    commentForm = mount(
+      <Root>
+        <CommentForm />
+      </Root>
+    )
   })
 
-  it('contains text area', () => {
+  it('contains textarea and button', () => {
     expect(commentForm.find('textarea').length).toBe(1)
+    expect(commentForm.find('button').length).toBe(1)
   })
 
-  it('contains button', () => {
-    expect(commentForm.find('button').length).toBe(1)
+  describe('textarea', () => {
+    beforeEach(() => {
+      commentForm.find('textarea').simulate('change', {
+        target: { value: comment }
+      })
+      commentForm.update()
+    })
+
+    it('is typeable', () => {
+      expect(commentForm.find('textarea').prop('value')).toBe(comment)
+    })
+
+    it('clears after the form is submitted', () => {
+      commentForm.find('form').simulate('submit', {
+        preventDefault () {}
+      })
+      commentForm.update()
+      expect(commentForm.find('textarea').prop('value')).toBe('')
+    })
   })
 
   afterEach(() => {

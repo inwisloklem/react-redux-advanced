@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from 'actions'
 import styles from 'components/CommentForm.module.sass'
 
 class CommentForm extends Component {
@@ -10,6 +13,7 @@ class CommentForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    this.props.saveComment(this.state.comment)
     this.setState({ comment: '' })
   }
 
@@ -32,4 +36,11 @@ class CommentForm extends Component {
   }
 }
 
-export default CommentForm
+CommentForm.propTypes = {
+  saveComment: PropTypes.func
+}
+
+export default connect(
+  null,
+  actions
+)(CommentForm)
