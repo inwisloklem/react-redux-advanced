@@ -18,4 +18,8 @@ describe('App', () => {
   it('contains CommentList component', () => {
     expect(app.find(CommentList).length).toBe(1)
   })
+
+  afterEach(() => {
+    app.unmount()
+  })
 })
