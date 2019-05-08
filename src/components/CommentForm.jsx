@@ -13,8 +13,11 @@ class CommentForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.saveComment(this.state.comment)
-    this.setState({ comment: '' })
+
+    if (this.state.comment) {
+      this.props.saveComment(this.state.comment)
+      this.setState({ comment: '' })
+    }
   }
 
   render () {
@@ -28,8 +31,17 @@ class CommentForm extends Component {
           placeholder='Enter your comment here...'
           value={comment}
         />
-        <button className={styles.button} type='submit'>
-          Add
+        <button className={styles.button} type='submit' data-submit>
+          Submit
+        </button>
+
+        <button
+          className={styles.button}
+          type='button'
+          onClick={this.props.fetchComments}
+          data-fetch
+        >
+          Fetch comments
         </button>
       </form>
     )
@@ -37,6 +49,7 @@ class CommentForm extends Component {
 }
 
 CommentForm.propTypes = {
+  fetchComments: PropTypes.func,
   saveComment: PropTypes.func
 }
 

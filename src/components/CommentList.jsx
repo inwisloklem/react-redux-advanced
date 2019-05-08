@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import styles from 'components/CommentList.module.sass'
 
-function CommentList () {
-  return (
-    <ul className={styles.list}>
-      <li className={styles.item}>
-        Be the change that you wish to see in the world
+class CommentList extends Component {
+  renderComments () {
+    return this.props.comments.map((comment, k) => (
+      <li className={styles.item} key={k}>
+        {comment}
       </li>
-      <li className={styles.item}>
-        Insanity is doing the same thing, over and over again, but expecting
-        different results
-      </li>
-      <li className={styles.item}>
-        No one can make you feel inferior without your consent
-      </li>
-    </ul>
-  )
+    ))
+  }
+
+  render () {
+    return <ul className={styles.list}>{this.renderComments()}</ul>
+  }
 }
 
-export default CommentList
+CommentList.propTypes = {
+  comments: PropTypes.array.isRequired
+}
+
+export default connect(state => ({ comments: state.comments }))(CommentList)

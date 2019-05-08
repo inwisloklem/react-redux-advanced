@@ -15,9 +15,9 @@ describe('CommentForm', () => {
     )
   })
 
-  it('contains textarea and button', () => {
+  it('contains textarea and two buttons', () => {
     expect(commentForm.find('textarea').length).toBe(1)
-    expect(commentForm.find('button').length).toBe(1)
+    expect(commentForm.find('button').length).toBe(2)
   })
 
   describe('textarea', () => {
