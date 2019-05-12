@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import App from 'components/App'
 import Root from 'Root'
 import 'index.sass'
@@ -7,7 +8,9 @@ import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <Root>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Root>,
   document.getElementById('root')
 )

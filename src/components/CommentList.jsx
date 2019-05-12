@@ -13,7 +13,12 @@ class CommentList extends Component {
   }
 
   render () {
-    return <ul className={styles.list}>{this.renderComments()}</ul>
+    return (
+      <>
+        <h2 className={styles.title}>Home</h2>
+        <ul className={styles.list}>{this.renderComments()}</ul>
+      </>
+    )
   }
 }
 
@@ -21,4 +26,8 @@ CommentList.propTypes = {
   comments: PropTypes.array.isRequired
 }
 
-export default connect(state => ({ comments: state.comments }))(CommentList)
+function mapStateToProps (state) {
+  return { comments: state.comments }
+}
+
+export default connect(mapStateToProps)(CommentList)

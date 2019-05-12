@@ -1,5 +1,12 @@
 import axios from 'axios'
-import { FETCH_COMMENTS, SAVE_COMMENT } from 'actions/types'
+import { CHANGE_AUTH, FETCH_COMMENTS, SAVE_COMMENT } from 'actions/types'
+
+export function changeAuth (isLoggedIn) {
+  return {
+    type: CHANGE_AUTH,
+    payload: isLoggedIn
+  }
+}
 
 export function fetchComments () {
   const response = axios.get('http://jsonplaceholder.typicode.com/comments')

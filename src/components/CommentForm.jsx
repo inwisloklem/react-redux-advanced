@@ -24,26 +24,29 @@ class CommentForm extends Component {
     const { comment } = this.state
     const { handleChange, handleSubmit } = this
     return (
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <textarea
-          className={styles.textArea}
-          onChange={handleChange}
-          placeholder='Enter your comment here...'
-          value={comment}
-        />
-        <button className={styles.button} type='submit' data-submit>
-          Submit
-        </button>
+      <>
+        <h2 className={styles.title}>Post comment</h2>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <textarea
+            className={styles.textArea}
+            onChange={handleChange}
+            placeholder='Enter your comment here...'
+            value={comment}
+          />
+          <button className={styles.button} type='submit' data-submit>
+            Submit
+          </button>
 
-        <button
-          className={styles.button}
-          type='button'
-          onClick={this.props.fetchComments}
-          data-fetch
-        >
-          Fetch comments
-        </button>
-      </form>
+          <button
+            className={styles.button}
+            type='button'
+            onClick={this.props.fetchComments}
+            data-fetch
+          >
+            Fetch comments
+          </button>
+        </form>
+      </>
     )
   }
 }
