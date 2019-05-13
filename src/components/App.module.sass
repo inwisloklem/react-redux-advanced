@@ -5,5 +5,51 @@
   max-width: 1000px
   min-height: 100vh
 
+.button
+  padding: 0 20px
+  min-width: 120px
+  height: 40px
+  background-color: $c-primary
+  border: none
+  color: $c-inverse
+  font-size: 18px
+  cursor: pointer
+  transition: $t-primary
+
+  &:not(:last-of-type)
+    margin-right: 10px
+
+  &:hover
+    background-color: $c-accent
+
 .commentForm
   margin-bottom: 40px
+
+.link
+  text-decoration: inherit
+  transition: $t-primary
+
+  &:global(.active)
+    border-bottom: solid 1px $c-primary
+    color: inherit
+    cursor: default
+
+  &:hover
+    color: $c-accent
+
+  &:visited
+    color: inherit
+
+.list
+  display: flex
+  align-items: center
+  margin: 0
+  margin-bottom: 20px
+  padding: 0
+  list-style: none
+
+.item
+  font-size: 18px
+
+  &:not(:last-of-type)
+    margin-right: 10px

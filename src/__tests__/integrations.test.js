@@ -4,6 +4,8 @@ import moxios from 'moxios'
 import Root from 'Root'
 import App from 'components/App'
 
+// TODO: Make this work
+
 describe('App', () => {
   const response = [{ name: 'Test comment 1.' }, { name: 'Test comment 2.' }]
   let app
@@ -25,7 +27,7 @@ describe('App', () => {
     app.find('button[data-fetch]').simulate('click')
     moxios.wait(() => {
       app.update()
-      expect(app.find('li').length).toBe(response.length)
+      expect(app.find('li')).toHaveLength(response.length)
       done()
     })
   })

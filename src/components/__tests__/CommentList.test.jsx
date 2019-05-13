@@ -18,11 +18,11 @@ describe('CommentList', () => {
   })
 
   it('creates one <li> per comment', () => {
-    expect(commentList.find('li').length).toBe(initialState.comments.length)
+    expect(commentList.find('li')).toHaveLength(initialState.comments.length)
   })
 
   it('shows the text for each comment', () => {
-    const text = commentList.render().text()
+    const text = commentList.find('ul').text()
     initialState.comments.forEach(comment => {
       expect(text).toContain(comment)
     })

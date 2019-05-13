@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Link } from 'react-router-dom'
+import { NavLink, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import CommentForm from 'components/CommentForm'
 import CommentList from 'components/CommentList'
@@ -8,19 +8,27 @@ import styles from 'components/App.module.sass'
 
 class App extends Component {
   renderButton () {
-    return <button>{this.props.auth ? 'Sign Out' : 'Sign In'}</button>
+    return (
+      <button className={styles.button}>
+        {this.props.auth ? 'Sign Out' : 'Sign In'}
+      </button>
+    )
   }
 
   renderHeader () {
     return (
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
+      <ul className={styles.list}>
+        <li className={styles.item}>
+          <NavLink className={styles.link} exact to='/'>
+            Home
+          </NavLink>
         </li>
-        <li>
-          <Link to='/post'>Post comment</Link>
+        <li className={styles.item}>
+          <NavLink className={styles.link} to='/post'>
+            Post comment
+          </NavLink>
         </li>
-        <li>{this.renderButton()}</li>
+        <li className={styles.item}>{this.renderButton()}</li>
       </ul>
     )
   }
