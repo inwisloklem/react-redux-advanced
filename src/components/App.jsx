@@ -2,15 +2,29 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { changeAuth } from 'actions'
 import CommentForm from 'components/CommentForm'
 import CommentList from 'components/CommentList'
 import styles from 'components/App.module.sass'
 
 class App extends Component {
   renderButton () {
+    if (this.props.auth) {
+      return (
+        <button
+          className={styles.button}
+          onClick={() => this.props.changeAuth(false)}
+        >
+          Sign Out
+        </button>
+      )
+    }
     return (
-      <button className={styles.button}>
-        {this.props.auth ? 'Sign Out' : 'Sign In'}
+      <button
+        className={styles.button}
+        onClick={() => this.props.changeAuth(true)}
+      >
+        Sign In
       </button>
     )
   }
@@ -45,11 +59,19 @@ class App extends Component {
 }
 
 App.propTypes = {
-  auth: PropTypes.bool.isRequired
+  auth: PropTypes.bool.isRequired,
+  changeAuth: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {
   return { auth: state.auth }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = {
+  changeAuth
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import * as actions from 'actions'
+import { fetchComments, saveComment } from 'actions'
 import styles from 'components/CommentForm.module.sass'
 
 class CommentForm extends Component {
@@ -56,7 +56,12 @@ CommentForm.propTypes = {
   saveComment: PropTypes.func
 }
 
+const mapDispatchToProps = {
+  fetchComments,
+  saveComment
+}
+
 export default connect(
   null,
-  actions
+  mapDispatchToProps
 )(CommentForm)
