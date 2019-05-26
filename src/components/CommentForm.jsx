@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchComments, saveComment } from 'actions'
+import requireAuth from 'components/requireAuth'
 import styles from 'components/CommentForm.module.sass'
 
 class CommentForm extends Component {
@@ -64,4 +65,4 @@ const mapDispatchToProps = {
 export default connect(
   null,
   mapDispatchToProps
-)(CommentForm)
+)(requireAuth(CommentForm))
