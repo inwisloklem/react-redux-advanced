@@ -25,7 +25,7 @@ export default function requireAuth (WrappedComponent) {
 
   ComposedComponent.propTypes = {
     auth: PropTypes.bool,
-    history: PropTypes.array
+    history: PropTypes.object
   }
 
   function mapStateToProps (state) {
